@@ -19,7 +19,7 @@ namespace KingMorphling
         private Hero LocalHero;
 
         public Sleeper sleeper = new Sleeper();
-        private AutoShift autoShift;
+        
         
        
 

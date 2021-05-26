@@ -22,7 +22,7 @@ namespace KingMorphling
 
         public Abuse abuse;
         public MenuSwitcher menuSwitcher;
-
+        private Combo combo;
         private Shift shift;
         private Hero LocalHero;
         private Save save;
@@ -33,25 +33,18 @@ namespace KingMorphling
         public static MenuSlider shiftSlider2; 
         public static MenuHoldKey HpToggleIntervalhd;
         public MenuSlider Size;
-        
         public MenuSlider PositionX;
-
         public MenuSlider PositionY;
-
         public static MenuSlider Perc;
-        
+        private MenuHoldKey comboHold;
+        private MenuSpellToggler menuItems;
+        private MenuSpellToggler menuSpell;
+
         public bool IsMove;
         public static bool saveOn;
-        public static bool ComboPressed;
         public static bool menuSwitcherOn;
         public static int perkValue;
         public static int perkValue2;
-
-
-       
-
-       
-
 
 
         public MainMenu()
@@ -82,11 +75,51 @@ namespace KingMorphling
             Perc = panel.CreateSlider("Perc", 500, 0, 6000);
             Perc.ValueChanged += Perc_ValueChanged;
             Perc.ValueChanged += Perc_ValueChanged1;
+            //Combo
+            var menuSelector4 = rootMenu.CreateMenu("Combo");
+            comboHold = menuSelector4.CreateHoldKey("ComboHold", Key.None);
+            comboHold.ValueChanged += ComboHold_ValueChanged;
+            menuSpell = menuSelector4.CreateSpellToggler("Spells", ListSpellsToggler, false);
+            menuItems = menuSelector4.CreateSpellToggler("Item",ListItemsToggler,false);
+            
             //Morph let me die
             HpToggleIntervalhd = rootMenu.CreateHoldKey("Abuse(BETA)",Key.None);
             HpToggleIntervalhd.ValueChanged += HpToggleIntervalhd_ValueChanged;
-            
+           
+        }
+        public static Dictionary<AbilityId, bool> ListSpellsToggler = new Dictionary<AbilityId, bool>
+        {
+                { AbilityId.morphling_adaptive_strike_agi,true },
+                { AbilityId.morphling_waveform,true }
+        };
 
+        public static Dictionary<AbilityId, bool> ListItemsToggler = new Dictionary<AbilityId, bool>
+            {
+                { AbilityId.item_black_king_bar,true},
+                { AbilityId.item_bloodthorn,true},
+                { AbilityId.item_mjollnir,true},
+                { AbilityId.item_nullifier,true},
+                { AbilityId.item_ethereal_blade,true},
+                { AbilityId.item_manta,true},
+                { AbilityId.item_diffusal_blade,true},
+                { AbilityId.item_essence_ring,true},
+                { AbilityId.item_minotaur_horn ,true}
+            };
+        private void ComboHold_ValueChanged(MenuHoldKey holdKey, HoldKeyEventArgs e)
+        {
+            if (combo == null)
+            {
+                combo = new Combo();
+            }
+
+            if (e.Value)
+            {
+                combo.Enable();
+            }
+            else
+            {
+                combo.Disable();
+            }
         }
 
         private void Perc_ValueChanged1(MenuSlider slider, SliderEventArgs e)
@@ -144,17 +177,7 @@ namespace KingMorphling
             }
         }
 
-        private void MenuHold_ValueChanged(MenuHoldKey holdKey, Divine.Menu.EventArgs.HoldKeyEventArgs e)
-        {
-            if (e.Value)
-            {
-                ComboPressed = true;
-            }
-            else
-            {
-                ComboPressed = false;
-            }
-        }
+      
 
         private void MenuSwitcher_ValueChanged(MenuSwitcher switcher, SwitcherEventArgs e)
         {

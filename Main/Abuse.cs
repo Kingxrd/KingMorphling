@@ -78,8 +78,8 @@ namespace KingMorphling
                 {
 
                     var lochstr = LocalHero.TotalStrength;
+                    Ability ability = LocalHero.Spellbook.Spells.FirstOrDefault();
 
-                    
                     if (LocalHero.IsValid)
                     {
                         MainMenu.Perc.Value = 100;
@@ -88,22 +88,29 @@ namespace KingMorphling
                             
                             foreach (var listitem in ItemList)
                             {
-                                for (int i = 0; i < Orders.Length; i++)
+                                if(listitem == ability.Id)
                                 {
-                                    sleeper.Sleep(300);
-                                    var order = Orders.OrderBy(x => x).FirstOrDefault();
-                                    var index = Array.IndexOf(Orders, order);
+                                    for (int i = 0; i < Orders.Length; i++)
+                                    {
+                                        sleeper.Sleep(300);
+                                        var order = Orders.OrderBy(x => x).FirstOrDefault();
+                                        var index = Array.IndexOf(Orders, order);
 
-                                    unit.Inventory.Move((ItemSlot)index, ItemSlot.BackPack_1);
+                                        unit.Inventory.Move((ItemSlot)index, ItemSlot.BackPack_1);
 
-                                    await Task.Delay(100);
+                                        await Task.Delay(100);
 
-                                    unit.Inventory.Move(ItemSlot.BackPack_1, (ItemSlot)index);
+                                        unit.Inventory.Move(ItemSlot.BackPack_1, (ItemSlot)index);
 
-                                    Orders[index] = GameManager.RawGameTime;
+                                        Orders[index] = GameManager.RawGameTime;
+                                    }
+
+                                    goto Finish;
                                 }
-
-                                goto Finish;
+                                else 
+                                {
+                                    return;
+                                }
 
                             }
                            

@@ -17,13 +17,9 @@ namespace KingMorphling
     {
         public static OrderAddingEventArgs e;
         private static Hero LocalHero;
-        private Hero Enemy;
         public Sleeper autoshsleeper = new Sleeper();
         public Sleeper sleeper = new Sleeper();
-        private Unit unit;
-        private Particle particle;
         public ParticleAddedEventArgs particleAdded;
-        private Particle targetParticle;
        
         public void Enable()
         {
@@ -32,15 +28,11 @@ namespace KingMorphling
             
         }
 
-        internal void Disable()
+        public void Disable()
         {
             UpdateManager.IngameUpdate -= UpdateManager_IngameUpdate;
             
         }
-
-
-       
-
 
 
         public static readonly List<AbilityId> StunList = new List<AbilityId>
@@ -115,10 +107,7 @@ namespace KingMorphling
 
 
     };
-        public List<Particle> StunList1 = new List<Particle>
-        {   
-            
-        };
+        
 
        
 

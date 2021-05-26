@@ -31,10 +31,7 @@ namespace KingMorphling
             return false; 
         }
 
-        public Helper()
-        {
-           //reversp = LocalHero.Spellbook.GetSpellById(AbilityId.magnataur_reverse_polarity);
-        }
+        
         public static bool IsCastable(Hero hero, Ability ability)
         {
             if (ability != null && ability.ManaCost < hero.Mana && ability.Level > 0 && (ability.Cooldown == 0))
@@ -63,17 +60,41 @@ namespace KingMorphling
 
             return false;
         }
-        //reversp = LocalHero.Spellbook.GetSpellById(AbilityId.magnataur_reverse_polarity);
-        //var reversp = LocalHero.Spellbook.GetSpellById(AbilityId.magnataur_reverse_polarity);
-        public static bool IsReversp(Hero hero, Ability ability, AbilityId abilityId, Unit unit)
-            {
-                if (ability == LocalHero.Spellbook.GetSpellById(AbilityId.magnataur_reverse_polarity) && ability.IsInAbilityPhase && unit.IsEnemy(LocalHero))
-                {
-                    return true;
-                }
+        public static bool ManaCheckItemAndHero(float manaCost, float manaPool)
+        {
+            if (manaPool - manaCost > 0)
+                return true;
+            return false;
+        }
+        public static Item FindItemMain(Unit unit, AbilityId abilityId)
+        {
+            var Item = unit.Inventory.GetItems((ItemSlot)0, (ItemSlot)5).FirstOrDefault(x => x.Id == abilityId);
+            return Item;
 
-                return false;
+        }
+        public static bool CanBeCasted(AbilityId abilityId, Unit MyHero)
+        {
+            bool Value;
+            Item item = FindItemMain(MyHero, abilityId);
+            if (item != null)
+            {
+                if (item.Cooldown == 0 && ManaCheckItemAndHero(item.ManaCost, MyHero.Mana) && item.IsValid && FindItemMain(MyHero, item.Id) != null)
+                {
+
+                    Value = true;
+                }
+                else
+                {
+                    Value = false;
+                }
             }
+            else
+            {
+                Value = false;
+            }
+
+            return Value;
+        }
 
         public static bool InputManager_MouseKeyDown2(MouseEventArgs e)
         {
