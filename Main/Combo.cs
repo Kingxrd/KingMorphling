@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,7 +51,7 @@ namespace KingMorphling
                 if (Helper.IsCastable(LocalHero, Waveform) && !sleeper.Sleeping && MainMenu.ListSpellsToggler.FirstOrDefault(x => x.Key == Waveform.Id).Value)
                 {
                     Waveform.Cast(LocalHero.Position.Extend(enemy.Position, LocalHero.Distance2D(enemy.Position) + 150));
-                    sleeper.Sleep(100);
+                    sleeper.Sleep(10);
 
                 }
 
@@ -82,7 +82,7 @@ namespace KingMorphling
                 {
                     item_manta = Helper.FindItemMain(LocalHero, AbilityId.item_manta);
                 }
-                if (item_manta != null && Helper.CanBeCasted(AbilityId.item_manta, LocalHero) && MainMenu.ListItemsToggler.FirstOrDefault(x => x.Key == item_manta.Id).Value)
+                if (item_manta != null && !Helper.IsCastable(LocalHero, Waveform) && Helper.CanBeCasted(AbilityId.item_manta, LocalHero) && MainMenu.ListItemsToggler.FirstOrDefault(x => x.Key == item_manta.Id).Value && LocalHero.IsInRange(enemy, 550))
                 {
                     item_manta.Cast();
                     return;
