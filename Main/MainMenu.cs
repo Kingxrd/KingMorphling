@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -323,17 +323,15 @@ namespace KingMorphling
             RendererManager.DrawText(percText, firstRect, Color.Green, fontFamilyName, FontFlags.Center | FontFlags.VerticalCenter, 36 * scaling);
 
             var secondRect = new RectangleF(rect.X, rect.Y + firstRect.Height, rect.Width, rect.Height - firstRect.Height);
-            //RendererManager.DrawText(minHPText, secondRect, Color.Red, fontFamilyName, FontFlags.VerticalCenter, 40 * scaling);
-            RendererManager.LoadTextureFromAssembly("KingMorphling.Rectangle.png", "KingMorphling.Resources.Rectangle.png");
-            RendererManager.DrawTexture("KingMorphling.Rectangle.png", secondRect);
+            RendererManager.DrawText(minHPText, secondRect, Color.Green, fontFamilyName, FontFlags.VerticalCenter, 40 * scaling);
             var maxHPTextSize = RendererManager.MeasureText(maxHPText, fontFamilyName, 40 * scaling);
-            //RendererManager.DrawText(
-            //    maxHPText,
-            //    new RectangleF(secondRect.X + secondRect.Width - maxHPTextSize.X, secondRect.Y, secondRect.Width, secondRect.Height),
-            //    Color.Red,
-            //    fontFamilyName,
-            //    FontFlags.VerticalCenter,
-            //    36 * scaling);
+            RendererManager.DrawText(
+                maxHPText,
+                new RectangleF(secondRect.X + secondRect.Width - maxHPTextSize.X, secondRect.Y, secondRect.Width, secondRect.Height),
+                Color.Red,
+                fontFamilyName,
+                FontFlags.VerticalCenter,
+                36 * scaling);
 
             var perc = (float)Perc;
             var progresLine = secondRect.X + (perc / 6000f * secondRect.Width);
@@ -343,7 +341,7 @@ namespace KingMorphling
                 RendererManager.DrawLine(new Vector2(progresLine, secondRect.Y), new Vector2(progresLine, secondRect.Y + secondRect.Height), Color.Aqua, lineWidth * 2);
             }
 
-            RendererManager.DrawLine(new Vector2(progresLine, secondRect.Y), new Vector2(progresLine, secondRect.Y + secondRect.Height), Color.Black, lineWidth);
+            RendererManager.DrawLine(new Vector2(progresLine, secondRect.Y), new Vector2(progresLine, secondRect.Y + secondRect.Height), Color.Purple, lineWidth);
         }
         public void Deactiv()
         {
