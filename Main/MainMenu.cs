@@ -72,7 +72,7 @@ namespace KingMorphling
             PositionX = panel.CreateSlider("PositionX", 500, 0, 10000);
             PositionY = panel.CreateSlider("PositionY", 500, 0, 10000);
             Size = panel.CreateSlider("Size", 50, 0, 100);
-            Perc = panel.CreateSlider("Perc", 500, 0, 6000);
+            Perc = panel.CreateSlider("Perc", 500, 0, 8000);
             Perc.ValueChanged += Perc_ValueChanged;
             Perc.ValueChanged += Perc_ValueChanged1;
             //Combo
