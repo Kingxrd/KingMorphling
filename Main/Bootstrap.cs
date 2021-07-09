@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Divine;
-using Divine.SDK;
-using System.Threading.Tasks;
+﻿using Divine.Entity;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Service;
 
 namespace KingMorphling
 {

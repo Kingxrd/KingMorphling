@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.223
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingMorphling", "Main\KingMorphling.csproj", "{8B4E1D3B-53C5-42BA-B26A-6A75BD9F1BD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B4E1D3B-53C5-42BA-B26A-6A75BD9F1BD0}.Release|x64.ActiveCfg = Release|x64
+		{8B4E1D3B-53C5-42BA-B26A-6A75BD9F1BD0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FCB1EDF-2A16-4A93-8087-8301EA977C00}
+	EndGlobalSection
+EndGlobal

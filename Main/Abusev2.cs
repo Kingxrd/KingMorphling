@@ -1,12 +1,16 @@
-﻿using Divine;
-using Divine.SDK;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Divine.Entity;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Abilities.Items.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Extensions;
+using Divine.Helpers;
+using Divine.Update;
 
 namespace KingMorphling
 {
@@ -87,12 +91,12 @@ namespace KingMorphling
 
         public void IsKeyDown()
         {
-            unit.Inventory.Move(ItemSlot.MainSlot_1, ItemSlot.BackPack_1);
-            unit.Inventory.Move(ItemSlot.MainSlot_2, ItemSlot.BackPack_1);
-            unit.Inventory.Move(ItemSlot.MainSlot_3, ItemSlot.BackPack_1);
-            unit.Inventory.Move(ItemSlot.MainSlot_4, ItemSlot.BackPack_1);
-            unit.Inventory.Move(ItemSlot.MainSlot_5, ItemSlot.BackPack_1);
-            unit.Inventory.Move(ItemSlot.MainSlot_6, ItemSlot.BackPack_1);
+            unit.Inventory.Move(ItemSlot.MainSlot1, ItemSlot.BackPack1);
+            unit.Inventory.Move(ItemSlot.MainSlot2, ItemSlot.BackPack1);
+            unit.Inventory.Move(ItemSlot.MainSlot3, ItemSlot.BackPack1);
+            unit.Inventory.Move(ItemSlot.MainSlot4, ItemSlot.BackPack1);
+            unit.Inventory.Move(ItemSlot.MainSlot5, ItemSlot.BackPack1);
+            unit.Inventory.Move(ItemSlot.MainSlot6, ItemSlot.BackPack1);
         }
         public void returnperc2()
         {

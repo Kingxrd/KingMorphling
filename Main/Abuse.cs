@@ -1,12 +1,20 @@
-﻿using Divine;
-using Divine.SDK;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
+using Divine.Entity;
+using Divine.Entity.Entities.Abilities;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Abilities.Items.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Helpers;
+using Divine.Update;
 
 namespace KingMorphling
 {
@@ -96,11 +104,11 @@ namespace KingMorphling
                                         var order = Orders.OrderBy(x => x).FirstOrDefault();
                                         var index = Array.IndexOf(Orders, order);
 
-                                        unit.Inventory.Move((ItemSlot)index, ItemSlot.BackPack_1);
+                                        unit.Inventory.Move((ItemSlot)index, ItemSlot.BackPack1);
 
                                         await Task.Delay(100);
 
-                                        unit.Inventory.Move(ItemSlot.BackPack_1, (ItemSlot)index);
+                                        unit.Inventory.Move(ItemSlot.BackPack1, (ItemSlot)index);
 
                                         Orders[index] = GameManager.RawGameTime;
                                     }

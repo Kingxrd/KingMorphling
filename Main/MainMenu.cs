@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Divine;
-using Divine.Menu;
-using Divine.Menu.Items;
-using System.Threading.Tasks;
-using Divine.SDK.Helpers;
-using Divine.SDK.Extensions;
-using SharpDX;
-using Divine.Menu.EventArgs;
-using System.Windows.Input;
-using System.Windows.Media;
 
+using Divine.Entity;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Input;
+using Divine.Input.EventArgs;
+using Divine.Menu;
+using Divine.Menu.EventArgs;
+using Divine.Menu.Items;
+using Divine.Numerics;
+using Divine.Renderer;
 
 namespace KingMorphling
 {
@@ -77,13 +76,13 @@ namespace KingMorphling
             Perc.ValueChanged += Perc_ValueChanged1;
             //Combo
             var menuSelector4 = rootMenu.CreateMenu("Combo");
-            comboHold = menuSelector4.CreateHoldKey("ComboHold", Key.None);
+            comboHold = menuSelector4.CreateHoldKey("ComboHold", System.Windows.Input.Key.None);
             comboHold.ValueChanged += ComboHold_ValueChanged;
             menuSpell = menuSelector4.CreateSpellToggler("Spells", ListSpellsToggler, false);
             menuItems = menuSelector4.CreateSpellToggler("Item",ListItemsToggler,false);
             
             //Morph let me die
-            HpToggleIntervalhd = rootMenu.CreateHoldKey("Abuse(BETA)",Key.None);
+            HpToggleIntervalhd = rootMenu.CreateHoldKey("Abuse(BETA)", System.Windows.Input.Key.None);
             HpToggleIntervalhd.ValueChanged += HpToggleIntervalhd_ValueChanged;
            
         }

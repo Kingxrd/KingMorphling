@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Divine;
-using Divine.Menu.Items;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using System.Text;
-using System.Threading.Tasks;
-using SharpDX;
+﻿using System.Linq;
+
+using Divine.Entity;
+using Divine.Entity.Entities.Abilities;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Abilities.Items.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Input;
+using Divine.Input.EventArgs;
 
 namespace KingMorphling
 {
@@ -108,7 +112,4 @@ namespace KingMorphling
         }
        
     }
-    
-       
-    
 }
